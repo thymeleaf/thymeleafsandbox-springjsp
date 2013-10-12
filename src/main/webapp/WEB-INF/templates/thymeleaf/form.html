@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Thymeleaf Sandbox: Spring + JSP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <h2>Thymeleaf-based Spring form</h2>
+
+
+
+    <form th:object="${user}" th:action="@{/thymeleaf/form}">
+
+        <p>
+            The ID of this user is: <span th:text="*{id}"></span>
+        </p>
+        <p>
+            The Registration Date of this user is: <span th:text="*{registrationDate}"></span>
+        </p>
+        <fieldset>
+            <div th:errors="*">
+                ...
+            </div>
+            <div>
+                <label for="userid">ID:</label><input type="text" id="userid" th:field="*{id}" />
+            </div>
+            <div>
+                <label for="name">Name:</label><input type="text" id="name" th:field="*{name}" />
+            </div>
+            <div>
+                <label for="surname">Surname:</label><input type="text" id="surname" th:field="*{surname}" />
+            </div>
+            <div>
+                <label for="registrationDate">Registration Date:</label><input type="text" id="registrationDate" th:field="*{registrationDate}" />
+            </div>
+            <div>
+                <input type="submit" value="Send!" />
+            </div>
+            <div>
+                <a th:href="@{/thymeleaf/userdetails(userId=${user.id})}">See more user details</a>
+                <a th:href="@{|/thymeleaf/${user.id}/userdetails|}">See even more user details</a>
+            </div>
+        </fieldset>
+
+    </form>
+
+  
+  </body>
+  
+</html>
