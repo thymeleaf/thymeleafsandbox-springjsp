@@ -19,6 +19,8 @@
  */
 package thymeleafsandbox.springjsp.web.conversion;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.Calendar;
@@ -26,6 +28,7 @@ import java.util.Locale;
 
 import org.springframework.format.Formatter;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.thymeleaf.util.NumberUtils;
 
 public class NumberFormatter implements Formatter<Number> {
 
@@ -35,12 +38,18 @@ public class NumberFormatter implements Formatter<Number> {
     }
 
     public Number parse(final String text, final Locale locale) throws ParseException {
-        final NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("es"));
+        final DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getNumberInstance();
+        final DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+        symbols.setGroupingSeparator('*');
+        numberFormat.setDecimalFormatSymbols(symbols);
         return numberFormat.parse(text);
     }
 
     public String print(final Number object, final Locale locale) {
-        final NumberFormat numberFormat = NumberFormat.getNumberInstance(new Locale("es"));
+        final DecimalFormat numberFormat = (DecimalFormat) NumberFormat.getNumberInstance();
+        final DecimalFormatSymbols symbols = new DecimalFormatSymbols(Locale.US);
+        symbols.setGroupingSeparator('*');
+        numberFormat.setDecimalFormatSymbols(symbols);
         return numberFormat.format(object);
     }
 }

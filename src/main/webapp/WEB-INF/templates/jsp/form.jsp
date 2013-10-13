@@ -32,6 +32,9 @@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!DOCTYPE html
                 <label for="userid">ID:</label><sf:input id="userid" path="id"/>
             </div>
             <div>
+                <s:message code="msg.one" arguments="${user.id}"/>
+            </div>
+            <div>
                 <label for="name">Name:</label><sf:input id="name" path="name"/>
             </div>
             <div>
