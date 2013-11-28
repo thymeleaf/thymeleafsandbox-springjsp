@@ -44,6 +44,15 @@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!DOCTYPE html
                 <label for="registrationDate">Registration Date:</label><sf:input id="registrationDate" path="registrationDate"/>
             </div>
             <div>
+                <label for="active">Active:</label><sf:checkbox id="active" path="active" disabled="true"/>
+            </div>
+            <div>
+                <label for="multiValues">Multiple Values:</label>
+                <sf:select id="multiValues" path="multiValues" multiple="true" disabled="true">
+                    <sf:options items="${user.multiValueOptions}" />
+                </sf:select>
+            </div>
+            <div>
                 <sf:button>Send!</sf:button>
             </div>
             <div>

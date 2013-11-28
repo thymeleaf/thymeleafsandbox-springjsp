@@ -19,7 +19,9 @@
  */
 package thymeleafsandbox.springjsp.business.entities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +34,10 @@ public class User {
     @DateTimeFormat(pattern = "yyyy/MM/dd")
     private Calendar registrationDate = null;
 
+    private Boolean active = Boolean.FALSE;
+
+    private List<String> multiValues = new ArrayList<String>();
+    private final String[] multiValueOptions = new String[] { "ONE", "TWO", "THREE", "FOUR"};
 
     
     public User() {
@@ -70,12 +76,39 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
+
+    public List<String> getMultiValues() {
+        return multiValues;
+    }
+
+    public void setMultiValues(final List<String> multiValues) {
+        this.multiValues = multiValues;
+    }
+
+
+    public String[] getMultiValueOptions() {
+        return multiValueOptions;
+    }
+
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
-                "id=" + this.id +
+                "@=" + System.identityHashCode(this) +
+                ", id=" + this.id +
                 ", name='" + this.name + '\'' +
                 ", surname='" + this.surname + '\'' +
+                ", multiValues=" + this.multiValues +
+                ", active=" + this.active +
                 ", registrationDate=" + this.registrationDate +
                 '}';
     }

@@ -13,7 +13,7 @@
 
 
 
-    <form th:object="${user}" th:action="@{/thymeleaf/form}">
+    <form th:object="${user}" th:action="@{/thymeleaf/form}" method="post">
 
         <p>
             The ID of this user is: <span th:text="${user.id}"></span>
@@ -32,19 +32,28 @@
                 ...
             </div>
             <div>
-                <label for="userid">ID:</label><input type="text" id="userid" th:field="*{id}" />
+                <label for="userid">ID:</label><input type="text" id="userid" th:field="*{id}" th:disabled="${param.d}" />
             </div>
             <div>
                 <span th:text="#{msg.one(${user.id})}">...</span>
             </div>
             <div>
-                <label for="name">Name:</label><input type="text" id="name" th:field="*{name}" />
+                <label for="name">Name:</label><input type="text" id="name" th:field="*{name}" th:disabled="${param.d}" />
             </div>
             <div>
-                <label for="surname">Surname:</label><input type="text" id="surname" th:field="*{surname}" />
+                <label for="surname">Surname:</label><input type="text" id="surname" th:field="*{surname}" th:disabled="${param.d}" />
             </div>
             <div>
-                <label for="registrationDate">Registration Date:</label><input type="text" id="registrationDate" th:field="*{registrationDate}" />
+                <label for="registrationDate">Registration Date:</label><input type="text" id="registrationDate" th:field="*{registrationDate}" th:disabled="${param.d}" />
+            </div>
+            <div>
+                <label for="active">Active:</label><input type="checkbox" id="active" th:field="*{active}" th:disabled="${param.d}" />
+            </div>
+            <div>
+                <label for="multiValues">Multiple Values:</label>
+                <select id="multiValues" th:field="*{multiValues}" multiple="multiple" th:disabled="${param.d}">
+                    <option th:each="o : ${user.multiValueOptions}" th:value="${o}" th:text="${o}">...</option>
+                </select>
             </div>
             <div>
                 <input type="submit" value="Send!" />

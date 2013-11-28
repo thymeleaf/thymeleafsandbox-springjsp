@@ -19,41 +19,52 @@
  */
 package thymeleafsandbox.springjsp.web.controller.jsp;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import thymeleafsandbox.springjsp.business.entities.User;
 
 
 @Controller
+@SessionAttributes({"user"})
 public class JspForm {
 
 
     public JspForm() {
         super();
     }
-    
+
+
+    @ModelAttribute("user")
+    public User populateUser() {
+        final User user = new User();
+        final Calendar registrationDate = Calendar.getInstance();
+        registrationDate.set(Calendar.MILLISECOND, 0);
+        registrationDate.set(Calendar.SECOND, 0);
+        registrationDate.set(Calendar.MINUTE, 0);
+        registrationDate.set(Calendar.HOUR, 0);
+        user.setId(Integer.valueOf(12345));
+        user.setRegistrationDate(registrationDate);
+        user.setActive(Boolean.TRUE);
+        user.setMultiValues(new ArrayList<String>(Arrays.asList(new String[]{"TWO", "FOUR"})));
+        return user;
+    }
     
     
     
     @RequestMapping("/jsp/form")
-    public String showForm(final User user, final BindingResult bindingResult) {
+    public String showForm(@ModelAttribute("user") final User user, final BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println("IN ERROR: " + user);
             return "jsp/form";
         }
-        System.out.println("No errors: " + user);
-        if (user != null && user.getId() == null) {
-            final Calendar registrationDate = Calendar.getInstance();
-            registrationDate.set(Calendar.MILLISECOND, 0);
-            registrationDate.set(Calendar.SECOND, 0);
-            registrationDate.set(Calendar.MINUTE, 0);
-            registrationDate.set(Calendar.HOUR, 0);
-            user.setId(Integer.valueOf(12345));
-            user.setRegistrationDate(registrationDate);
-        }
+        System.out.println(user);
         return "jsp/form";
     }
 
