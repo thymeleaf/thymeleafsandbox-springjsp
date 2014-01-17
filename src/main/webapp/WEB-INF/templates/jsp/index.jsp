@@ -19,11 +19,13 @@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%><!DOCTYPE html
         <li>JSP
             <ul>
                 <li><a href="<s:url value="/jsp/form"/>">Form</a></li>
+                <li><a href="<s:url value="/jsp/exp"/>">Expressions</a></li>
             </ul>
         </li>
         <li>Thymeleaf
             <ul>
                 <li><a href="<s:url value="/thymeleaf/form"/>">Form</a></li>
+                <li><a href="<s:url value="/thymeleaf/exp"/>">Expression</a></li>
             </ul>
         </li>
     </ul>
