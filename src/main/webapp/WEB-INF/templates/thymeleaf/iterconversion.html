@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Thymeleaf Sandbox: Spring + JSP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <h1>Testing the iteration + conversion combination in Spring MVC</h1>
+
+    <ul>
+      <li th:each="d : ${dates}" th:text="${{d.dateOne}} + ' - ' + ${{d.dateTwo}}">...</li>
+    </ul>
+
+  </body>
+  
+</html>
