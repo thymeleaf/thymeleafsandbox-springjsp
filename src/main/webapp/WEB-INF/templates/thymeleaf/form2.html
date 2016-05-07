@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Thymeleaf Sandbox: Spring + JSP</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+
+  <body>
+
+    <h2>Thymeleaf-based Spring form</h2>
+
+
+
+    <form th:action="@{/thymeleaf/form2do}" th:object="${user}" method="post">
+
+        <p>
+            Test textarea: <textarea th:field="*{name}"></textarea>
+        </p>
+
+        <input type="submit" value="send" />
+
+    </form>
+
+  
+  </body>
+  
+</html>
