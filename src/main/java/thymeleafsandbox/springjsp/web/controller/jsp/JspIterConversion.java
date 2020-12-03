@@ -20,19 +20,13 @@
 package thymeleafsandbox.springjsp.web.controller.jsp;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.thymeleaf.util.DateUtils;
-import sun.util.calendar.CalendarUtils;
 import thymeleafsandbox.springjsp.business.entities.DatesSummary;
-import thymeleafsandbox.springjsp.business.entities.User;
 
 
 @Controller
